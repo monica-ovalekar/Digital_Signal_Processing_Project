@@ -1,0 +1,13 @@
+% initialize matrix:
+N = 200;
+M = zeros(N,6);
+
+M(:,1) = 1;         % all in track 1
+M(:,2) = 1;         % all in channel 1
+M(:,3) = 30 + round(60*rand(N,1));  % random note numbers
+M(:,4) = 60 + round(40*rand(N,1));  % random volumes
+M(:,5) = 10 * rand(N,1);
+M(:,6) = M(:,5) + .2 + rand(N,1);  % random duration .2 -> 1.2 seconds
+
+midi_new = matrix2midi(M);
+writemidi(midi_new, 'testout2.mid');
